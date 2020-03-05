@@ -3,9 +3,10 @@ node {
         git 'https://github.com/allure-examples/allure-testng-example.git'
     }
     
-    stage('actions'){
-        emailext body: '''${SCRIPT, template="build-report.groovy"}''',
-                subject: "[Jenkins] REPORT",
-                to: "shivakumargali83@gmail.com"
+    stage('email'){
+        emailext body: '''${SCRIPT, template="groovy-html.template"}''',
+            mimeType: 'text/html',
+            subject: "[Jenkins] REPORT",
+            to: "shivakumargali83@gmail.com"
     }
 }
